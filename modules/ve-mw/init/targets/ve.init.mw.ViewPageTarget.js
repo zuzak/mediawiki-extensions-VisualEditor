@@ -1680,7 +1680,7 @@ ve.init.mw.ViewPageTarget.prototype.onUnload = function () {
 	if ( !this.submitting ) {
 		ve.track( 'mwedit.abort', {
 			type: this.edited ? 'unknown-edited' : 'unknown',
-			mechanism: 'navigation'
+			mechanism: 'navigate'
 		} );
 	}
 };
