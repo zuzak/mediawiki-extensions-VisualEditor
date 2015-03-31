@@ -118,7 +118,16 @@ ve.ui.MWGeneralReferenceDialog.prototype.initialize = function ( data ) {
 			// Attach to fieldset
 			refButtonsFieldset.$element.append( button.$element );
 			// Event
-			button.connect( this, { click: [ 'onDialogButtonClick', 'transclusion', { template: item.template } ] } );
+			button.connect(
+				this,
+				{
+					click: [
+						'onDialogButtonClick',
+						'cite-' + item.name,
+						{ template: item.template }
+					]
+				}
+			);
 		}
 	}
 
