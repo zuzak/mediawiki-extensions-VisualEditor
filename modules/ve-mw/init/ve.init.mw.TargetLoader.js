@@ -95,7 +95,7 @@
 		 * Request the page HTML and various metadata from the MediaWiki API and Parsoid.
 		 * @return {jQuery.Promise} Abortable promise resolved with a JSON object
 		 */
-		requestPageData: function ( pageName, oldid ) {
+		requestPageData: function ( pageName, oldid, targetName ) {
 			var start, apiXhr, restbaseXhr, apiPromise, restbasePromise, dataPromise,
 				data = {
 					action: 'visualeditor',
@@ -121,7 +121,8 @@
 				ve.track( 'mwtiming.performance.system.apiLoad', {
 					bytes: $.byteLength( jqxhr.responseText ),
 					duration: ve.now() - start,
-					cacheHit: /hit/i.test( jqxhr.getResponseHeader( 'X-Cache' ) )
+					cacheHit: /hit/i.test( jqxhr.getResponseHeader( 'X-Cache' ) ),
+					targetName: targetName
 				} );
 				return data;
 			} );
@@ -139,7 +140,8 @@
 						ve.track( 'trace.restbaseLoad.exit' );
 						ve.track( 'mwtiming.performance.system.restbaseLoad', {
 							bytes: $.byteLength( jqxhr.responseText ),
-							duration: ve.now() - start
+							duration: ve.now() - start,
+							targetName: targetName
 						} );
 						return data;
 					},
