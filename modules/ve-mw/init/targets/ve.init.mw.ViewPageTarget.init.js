@@ -533,7 +533,7 @@
 		var url, a = document.createElement( 'a' );
 
 		a.href = conf.restbaseUrl;
-		url = '//' + a.hostname + '/' + mw.config.get( 'wgServerName' ) + '/v1/';
+		url = '//' + a.hostname + '/_preconnect';
 		if ( navigator.sendBeacon ) {
 			navigator.sendBeacon( url );
 		} else {
