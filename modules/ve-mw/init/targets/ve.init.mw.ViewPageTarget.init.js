@@ -140,6 +140,12 @@
 			.always( hideLoading );
 	}
 
+	function trackActivateStart( initData ) {
+		ve.track( 'trace.activate.enter' );
+		ve.track( 'mwedit.init', initData );
+		mw.libs.ve.activationStart = ve.now();
+	}
+
 	conf = mw.config.get( 'wgVisualEditorConfig' );
 	tabMessages = conf.tabMessages;
 	uri = new mw.Uri();
@@ -425,8 +431,7 @@
 				return;
 			}
 
-			ve.track( 'trace.activate.enter' );
-			ve.track( 'mwedit.init', { type: 'page', mechanism: 'click' } );
+			trackActivateStart( { type: 'page', mechanism: 'click' } );
 
 			if ( history.pushState && uri.query.veaction !== 'edit' ) {
 				// Replace the current state with one that is tagged as ours, to prevent the
@@ -450,8 +455,7 @@
 				return;
 			}
 
-			ve.track( 'trace.activate.enter' );
-			ve.track( 'mwedit.init', { type: 'section', mechanism: 'click' } );
+			trackActivateStart( { type: 'section', mechanism: 'click' } );
 
 			if ( history.pushState && uri.query.veaction !== 'edit' ) {
 				// Replace the current state with one that is tagged as ours, to prevent the
@@ -554,8 +558,7 @@
 			if ( isViewPage && uri.query.veaction === 'edit' ) {
 				isSection = uri.query.vesection !== undefined;
 
-				ve.track( 'trace.activate.enter' );
-				ve.track( 'mwedit.init', { type: isSection ? 'section' : 'page', mechanism: 'url' } );
+				trackActivateStart( { type: isSection ? 'section' : 'page', mechanism: 'url' } );
 				activateTarget();
 			}
 		}
