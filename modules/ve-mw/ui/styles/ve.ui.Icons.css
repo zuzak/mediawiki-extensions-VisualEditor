@@ -176,3 +176,8 @@
 	/* @embed */
 	background-image: url(images/icons/profile.svg);
 }
+
+.oo-ui-icon-link {
+	/* @embed */
+	background-image: url(images/icons/link-ltr.svg);
+}

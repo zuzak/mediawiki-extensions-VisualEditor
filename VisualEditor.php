@@ -282,7 +282,6 @@ $wgResourceModules += array(
 		'dependencies' => array(
 			'oojs',
 			'oojs-ui',
-			'oojs-ui.styles.icons-editing-core',
 			'unicodejs',
 			'ext.visualEditor.ve',
 		),
