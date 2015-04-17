@@ -87,6 +87,9 @@ $wgHooks['PageContentSaveComplete'][] = 'VisualEditorHooks::onPageContentSaveCom
 $wgHooks['BeforeInitialize'][] = 'VisualEditorHooks::onBeforeInitialize';
 $wgExtensionFunctions[] = 'VisualEditorHooks::onSetup';
 
+// Run split test in production if $wgVisualEditorEnableSplitTest is true.
+$wgHooks['AddNewAccount'][] = 'VisualEditorHooks::onAddNewAccount';
+
 // Register resource modules
 
 $wgVisualEditorResourceTemplate = array(
@@ -1699,5 +1702,8 @@ $wgVisualEditorTabMessages = array(
 	'editsectionappendix' => null,
 	'editsectionsourceappendix' => null,
 );
+
+// Whether to enable VisualEditor for half of all new accounts (userID even).
+$wgVisualEditorEnableSplitTest = false;
 
 unset( $wgVisualEditorResourceTemplate );
